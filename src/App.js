@@ -15,7 +15,7 @@ class weekObjectMaker{
 function makeNumberWeeks(weeks){
   var array=[];
 for (var i = 0; i < weeks; i++){
-   array.push( new weekObjectMaker(150,77,'yo','yo'));
+   array.push( new weekObjectMaker(150,77,'none','none'));
 }
 return array;
 }
@@ -30,7 +30,7 @@ export default class App extends Component {
       goalWeight: 150,
       startingWeight: 0,
       Trimester1Weeks: makeWeeks1,
-      
+      Trimester23Weeks: makeWeeks2,
       
     }
     this.makeTrimester1=this.makeTrimester1.bind(this);
@@ -59,7 +59,7 @@ return array;
 
 //create goals for trimester 2-3
 makeTrimester23(){
-  var array=this.state.weeksArray.slice(0);
+  var array=this.state.Trimester23Weeks.slice(0);
   
   var startingWeight= this.state.startingWeight;
    var trimester1Length=12;
@@ -88,7 +88,7 @@ return array;
           <PatientInfo/>
         </div>
         <div className="calendarClass">
-          <Calendar Trimester1Weeks={this.state.Trimester1Weeks}/>
+          <Calendar Trimester1Weeks={this.state.Trimester1Weeks} Trimester23Weeks={this.state.Trimester23Weeks}/>
         </div>
         <div className="mommyFactsclass">
           <MommyFacts />
