@@ -10,6 +10,7 @@ export default class PatientInfo extends Component{
             height: 60
         }
         this.handleWeightChange=this.handleWeightChange.bind(this);
+        this.handleHeightChange=this.handleHeightChange.bind(this);
     }
 
 
@@ -18,12 +19,15 @@ handleWeightChange(e){
         startingWeight: e.target.value
     })
 }
-
-combineAddClear(state){
-    this.clearInput();
+handleHeightChange(e){
+    this.setState({
+       height: e.target.value
+    })
 }
+
+
     render(){
-        console.log(this.state.startingWeight)
+       console.log(this.state.startingWeight)
         console.log(this.state.height)
         return(
             <div>
@@ -31,11 +35,11 @@ combineAddClear(state){
                  I am female (or a pregnant seahorse)
                  <br/>
                  <br/>
-              I weigh <input onChange={this.handleWeightChange}/>lbs.
+              Weight in lbs.<input onChange={this.handleWeightChange}/>
               <button>Take Weight</button>
                <br/>
                <br/>
-               I am <input/> inches tall
+               Height in inches<input onChange={this.handleHeightChange}/>
                <button>Take Height</button>
                <br/>
                <h4>Your BMI is : {calculatedBMI}</h4>
