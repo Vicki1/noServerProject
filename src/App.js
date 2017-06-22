@@ -12,18 +12,26 @@ class weekObjectMaker{
     this.patientsNote=patientsNote;
   }
 }
+function makeNumberWeeks(weeks){
+  var array=[];
+for (var i = 0; i < weeks; i++){
+   array.push( new weekObjectMaker(150,0,'',''));
+}
+return array;
+}
+
+var makeWeeks = makeNumberWeeks(12);
 
 export default class App extends Component {
   constructor(){
     super();
     this.state={
-      goalWeight: 0,
+      goalWeight: 150,
       startingWeight: 0,
-      weeksArray: [],
+      weeksArray: makeWeeks,
       totalWeeks: 36
     }
-this.makeNumberWeeks=this.makeNumberWeeks.bind(this);
-    /*this.makeTrimester1=this.makeTrimester1.bind(this);*/
+    this.makeTrimester1=this.makeTrimester1.bind(this);
      this.makeTrimester23=this.makeTrimester23.bind(this);
  
   }
@@ -31,22 +39,19 @@ this.makeNumberWeeks=this.makeNumberWeeks.bind(this);
 
   
 
-makeNumberWeeks(){
-var array=this.state.weeksArray.slice();
-var weeks=this.state.totalWeeks;
-for (var i = 0; i < weeks; i++){
-   array.push( new weekObjectMaker(0,0,'',''));
-}
-return array;
-}
+
 
 //create goals for trimester 1
 makeTrimester1(){
   var array=this.state.weeksArray.slice(0);
-  var startingweight=this.state.startingWeight;
+ 
+  var startingWeight=this.state.startingWeight;
    var trimester1Length=12;
+
+   console.log(array[1].goalWeight)
    for (var i = 0; i < trimester1Length ; i++){
- array[i]['goalWeight']=(startingweight+4); 
+     console.log(array[i])
+    array[i].goalWeight = (startingWeight+4); 
 } 
 return array;
 
@@ -57,10 +62,11 @@ return array;
 //create goals for trimester 2-3
 makeTrimester23(){
   var array=this.state.weeksArray.slice(0);
-  var startingweight= this.state.startingWeight;
+  
+  var startingWeight= this.state.startingWeight;
    var trimester1Length=12;
    for (var i = 0; i < trimester1Length ; i++){
- array[i]['goalWeight']=(startingweight+5+(1.3*(i))); 
+      array[i].goalWeight=(startingWeight+5+(1.3*(i))); 
  } 
 return array;
 }
@@ -73,8 +79,8 @@ return array;
 
 
  
-  //console.log(this.makeTrimester1(this.state.weekWeightArray,this.state.startingWeight))
-   console.log(this.makeTrimester23(this.state.weekWeightArray,this.state.startingWeight))
+  console.log(this.makeTrimester1())
+   console.log(this.makeTrimester23())
     return (
       <div className="App">
         <div className="App-header">
