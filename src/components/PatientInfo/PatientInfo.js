@@ -25,6 +25,14 @@ handleHeightChange(e){
     })
 }
 
+combineClearWeight(state){
+       this.props.addTodo(state);
+       this.clearInput();
+   }
+   combineClearhHeight(state){
+       this.props.addTodo(state);
+       this.clearInput();
+   }
 
     render(){
        console.log(this.state.startingWeight)
@@ -36,11 +44,11 @@ handleHeightChange(e){
                  <br/>
                  <br/>
               Weight in lbs.<input onChange={this.handleWeightChange}/>
-              <button>Take Weight</button>
+              <button id="addWeight" onClick={()=>this.combineAddClear(this.state.userInput)}>Take Weight</button>
                <br/>
                <br/>
                Height in inches<input onChange={this.handleHeightChange}/>
-               <button>Take Height</button>
+               <button id="addHeight" onClick={()=>this.combineAddClear(this.state.userInput)}>Take Height</button>
                <br/>
                <h4>Your BMI is : {calculatedBMI}</h4>
             </div>
