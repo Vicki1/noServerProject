@@ -23,7 +23,7 @@ export default class App extends Component {
       totalWeeks: 36
     }
 this.makeNumberWeeks=this.makeNumberWeeks.bind(this);
-    this.makeTrimester1=this.makeTrimester1.bind(this);
+    /*this.makeTrimester1=this.makeTrimester1.bind(this);*/
      this.makeTrimester23=this.makeTrimester23.bind(this);
  
   }
@@ -41,21 +41,22 @@ return array;
 }
 
 //create goals for trimester 1
-makeTrimester1(array,startingweight){
-  var array=this.state.weeksArray;
+makeTrimester1(){
+  var array=this.state.weeksArray.slice(0);
   var startingweight=this.state.startingWeight;
    var trimester1Length=12;
    for (var i = 0; i < trimester1Length ; i++){
  array[i]['goalWeight']=(startingweight+4); 
- } 
+} 
 return array;
+
 }
 
 
 
 //create goals for trimester 2-3
-makeTrimester23(array,startingweight){
-  var array=this.state.weeksArray;
+makeTrimester23(){
+  var array=this.state.weeksArray.slice(0);
   var startingweight= this.state.startingWeight;
    var trimester1Length=12;
    for (var i = 0; i < trimester1Length ; i++){
@@ -67,11 +68,12 @@ return array;
 
 
 
+
  render() {
 
 
-   
-   console.log(this.makeTrimester1(this.state.weekWeightArray,this.state.startingWeight))
+ 
+  //console.log(this.makeTrimester1(this.state.weekWeightArray,this.state.startingWeight))
    console.log(this.makeTrimester23(this.state.weekWeightArray,this.state.startingWeight))
     return (
       <div className="App">
