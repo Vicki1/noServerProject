@@ -17,6 +17,7 @@ export default class App extends Component {
   constructor(){
     super();
     this.state={
+      goalWeight: 0,
       startingWeight: 0,
       weeksArray: [],
       totalWeeks: 36
@@ -36,37 +37,33 @@ var weeks=this.state.totalWeeks;
 for (var i = 0; i < weeks; i++){
    array.push( new weekObjectMaker(0,0,'',''));
 }
-this.setState({
-weeksArray: array,
-})
+return array;
 }
 
 //create goals for trimester 1
-makeTrimester1(){
-  var array=this.state.weeksArray.splice();
-  var weight=this.state.startingWeight;
+makeTrimester1(array,startingweight){
+  var array=this.state.weeksArray;
+  var startingweight=this.state.startingWeight;
    var trimester1Length=12;
    for (var i = 0; i < trimester1Length ; i++){
- array[i].goalWeight=(weight+4); 
- console.log(array[i]);
+ array[i]['goalWeight']=(startingweight+4); 
  } 
-this.setState({
-   weeksArray:array
- })
+return array;
 }
 
+
+
 //create goals for trimester 2-3
-makeTrimester23(){
-  var array= this.weeksArray.splice();
-  var weight=this.startingWeight;
-  var trimester23Length=36
-   for (var i=12; i < trimester23Length; i++){
-array[i].goalWeight=(weight+5+(1.3*(i-12))); 
+makeTrimester23(array,startingweight){
+  var array=this.state.weeksArray;
+  var startingweight= this.state.startingWeight;
+   var trimester1Length=12;
+   for (var i = 0; i < trimester1Length ; i++){
+ array[i]['goalWeight']=(startingweight+5+(1.3*(i))); 
  } 
- this.setState({
-   weeksArray:array
- })
+return array;
 }
+
 
 
 
@@ -74,8 +71,8 @@ array[i].goalWeight=(weight+5+(1.3*(i-12)));
 
 
    
-   //console.log(this.makeTrimester1(this.state.weekWeightArray,this.state.startingWeight))
-   //console.log(this.makeTrimester23(this.state.weekWeightArray,this.state.startingWeight))
+   console.log(this.makeTrimester1(this.state.weekWeightArray,this.state.startingWeight))
+   console.log(this.makeTrimester23(this.state.weekWeightArray,this.state.startingWeight))
     return (
       <div className="App">
         <div className="App-header">
