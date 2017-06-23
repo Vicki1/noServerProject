@@ -11,7 +11,7 @@ class weekObjectMaker{
 function makeNumberWeeks(weeks){
   var array=[];
 for (var i = 0; i < weeks; i++){
-   array.push( new weekObjectMaker('____','____',' none',' none'));
+   array.push( new weekObjectMaker('____',<input className="actualWeightInput"/>,<input className="doctorsNoteInput"/>,<input className="patientsNoteInput"/>));
 }
 return array;
 }
@@ -26,8 +26,7 @@ export default class Calendar extends Component{
         this.state={
                Trimester1Weeks: makeWeeks1,
               Trimester23Weeks: makeWeeks2,
-            Trimester1WeeksGainPlan: [1,2,3,4],
-             Trimester23WeeksGainPlan: [1,2,3,4],
+           
         }
         this.makeTrimester1=this.makeTrimester1.bind(this);
         this.makeTrimester23=this.makeTrimester23.bind(this);
@@ -48,7 +47,7 @@ makeTrimester1(){
     array[i].goalWeight = (startingWeight+4); 
 } 
 this.setState({
-  Trimester1WeeksGainPlan: array
+  Trimester1Weeks: array
 })
 
 }
@@ -58,31 +57,23 @@ makeTrimester23(){
   var array=this.state.Trimester23Weeks.slice(0);
   
   var startingWeight= this.props.startingWeight;
-   var trimester1Length=12;
+   var trimester1Length=24;
    for (var i = 0; i < trimester1Length ; i++){
       array[i].goalWeight=(startingWeight+5+(1.3*(i))); 
  } 
-
+console.log(array);
 this.setState({
-   Trimester23WeeksGainPlan: array
+   Trimester23Weeks: array
 })
 }
 
-//Calculate pregnancy weight gain plan if patient has healthy BMI (bmiRange ===Healthy)
-    /* calculate(){
-  if (this.props.bmiRange=== "HEALTHY"){
-  this.makeTrimester1();
- this.makeTrimester23();
-  }
-}   */ 
 
 
 componentDidMount(){
-      if (this.props.bmiRange=== "HEALTHY"){
-  console.log(this.makeTrimester1());
- console.log(this.makeTrimester23()); 
+    this.makeTrimester1();
+    this.makeTrimester23();
 }
-}
+
     render(){
         console.log(this.state.Trimester1Weeks);
         return(
@@ -95,10 +86,10 @@ componentDidMount(){
                                 <br/>
                                 <br/>
                                 Week {i+1}<br/><br/>
-                                Goal Weight:{object.goalWeight}<br/><br/>
-                                Actual Weight:{object.actualWeight}<br/><br/>
-                                Doctors Note:{object.doctorsNote}<br/><br/>
-                                Actual Note:{object.patientsNote}</li>
+                                Goal Weight: {object.goalWeight}<br/><br/>
+                                Actual Weight: {object.actualWeight}<br/><br/>
+                                Doctor's Note: {object.doctorsNote}<br/><br/>
+                                Personal Note: {object.patientsNote}</li>
                               
                             
                         })
@@ -112,8 +103,8 @@ componentDidMount(){
                                  Week {i+13}<br/><br/>
                                 Goal Weight:{object.goalWeight}<br/><br/>
                                 Actual Weight:{object.actualWeight}<br/><br/>
-                                Doctors Note:{object.doctorsNote}<br/><br/>
-                                Patient Note:{object.patientsNote}</li>
+                                Doctor's Note:{object.doctorsNote}<br/><br/>
+                                Personal Note:{object.patientsNote}</li>
                               
                             
                         })
