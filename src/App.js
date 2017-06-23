@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Calendar from './components/Calendar/Calendar';
-import PatientInfo, {giveStartingWeight} from './components/PatientInfo/PatientInfo';
+import PatientInfo from './components/PatientInfo/PatientInfo';
 import MommyFacts from './components/MommyFacts/MommyFacts';
 
 class weekObjectMaker{
@@ -30,7 +30,7 @@ export default class App extends Component {
     this.state={
       goalWeight: 0,
         startingWeight: 40,
-        bmiRange: 'HEALTHY',
+        bmiRange: '______',
       Trimester1Weeks: makeWeeks1,
       Trimester23Weeks: makeWeeks2,
 
@@ -39,6 +39,7 @@ export default class App extends Component {
     this.makeTrimester1=this.makeTrimester1.bind(this);
      this.makeTrimester23=this.makeTrimester23.bind(this);
  this.getStartingWeight=this.getStartingWeight.bind(this);
+ this.calculate=this.calculate.bind(this);
   }
 
 
@@ -72,6 +73,7 @@ makeTrimester23(){
 return array;
 }
 
+// get bmiRange and startingWeight input from PatentInfo.js
 getStartingWeight(bmiRange,startingWeight){
 this.setState({
 bmiRange: bmiRange,
@@ -79,12 +81,17 @@ startingWeight : startingWeight
 })
 }
 
-
+//Calculate pregnancy weight gain plan if patient has healthy BMI (bmiRange ===Healthy)
+calculate(){
+  if (this.state.bmiRange=== "HEALTHY"){
+  console.log(this.makeTrimester1());
+  console.log(this.makeTrimester23());
+  }
+}
 
  render() {
 
-
- 
+this.calculate();
 
     return (
       <div className="App">

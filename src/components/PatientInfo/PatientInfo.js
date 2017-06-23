@@ -10,12 +10,14 @@ export default class PatientInfo extends Component{
             startingWeight2: 0,
             height: 20,
             calculatedBMI: 0,
+            bmiRange2: "_______"
            
             
         }
         this.handleWeightChange=this.handleWeightChange.bind(this);
         this.handleHeightChange=this.handleHeightChange.bind(this);
         this.calculatBMI=this.calculatBMI.bind(this);
+
        
     }
 
@@ -33,7 +35,7 @@ handleHeightChange(e){
 }
 
  calculatBMI(state){
-      var convertedWeight= (this.state.startingWeigh2t*0.45);
+      var convertedWeight= (this.state.startingWeight2*0.45);
       var convertedHeight= (this.state.height*0.025);
       var heightSquared=Math.pow(convertedHeight,2);
       var myCalculatedBMI= (convertedWeight/heightSquared);
@@ -53,6 +55,9 @@ handleHeightChange(e){
       else {
           range="INVALID INPUT, Please input numeric values for height and weight"
       }
+      this.setState({
+        bmiRange2: range
+      })
    return this.props.getStartingWeight(range,this.state.startingWeight2);
     }
    
@@ -82,7 +87,7 @@ handleHeightChange(e){
              <br/>
 
              <h4>Your BMI is : {this.state.calculatedBMI}</h4>
-             <h4>Your BMI is generally considered: {this.state.bmiRange}</h4>
+             <h4>Your BMI is generally considered: {this.state.bmiRange2}</h4>
             </div>
         )
     }
