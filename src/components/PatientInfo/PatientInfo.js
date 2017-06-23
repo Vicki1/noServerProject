@@ -7,10 +7,10 @@ export default class PatientInfo extends Component{
         super();
         this.state={
          
-            startingWeight: 40,
+            startingWeight2: 0,
             height: 20,
             calculatedBMI: 0,
-            bmiRange: "HEALTHY"
+           
             
         }
         this.handleWeightChange=this.handleWeightChange.bind(this);
@@ -23,7 +23,7 @@ export default class PatientInfo extends Component{
 
 handleWeightChange(e){
     this.setState({
-        startingWeight: e.target.value
+        startingWeight2: e.target.value
     })
 }
 handleHeightChange(e){
@@ -32,17 +32,8 @@ handleHeightChange(e){
     })
 }
 
-combineClearWeight(state){
-       this.props.addTodo(state);
-       this.clearInput();
-   }
-   combineClearhHeight(state){
-       this.props.addTodo(state);
-       this.clearInput();
-   }
-
-   calculatBMI(state){
-      var convertedWeight= (this.state.startingWeight*0.45);
+ calculatBMI(state){
+      var convertedWeight= (this.state.startingWeigh2t*0.45);
       var convertedHeight= (this.state.height*0.025);
       var heightSquared=Math.pow(convertedHeight,2);
       var myCalculatedBMI= (convertedWeight/heightSquared);
@@ -62,23 +53,25 @@ combineClearWeight(state){
       else {
           range="INVALID INPUT, Please input numeric values for height and weight"
       }
-    this.setState({
-      bmiRange: range  
-    })
-   }
+   return this.props.getStartingWeight(range,this.state.startingWeight2);
+    }
+   
+
+
+
 
 
 
     render(){
-       console.log(this.state)
-      
+    
+    
         return(
             <div>
                 <h3>{this.state.openingMessage}</h3>
-                <h3>What is your BMI?</h3>
-                 I am female (or a pregnant seahorse)
-                 <br/>
-                 <br/>
+                <h3>Calculate your BMI</h3>
+                 
+                
+                
               Pre-pregnancy weight in lbs. <input onChange={this.handleWeightChange}/>
                <br/>
                <br/>
@@ -93,4 +86,4 @@ combineClearWeight(state){
             </div>
         )
     }
-}
+  }  

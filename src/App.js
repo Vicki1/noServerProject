@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Calendar from './components/Calendar/Calendar';
-import PatientInfo from './components/PatientInfo/PatientInfo';
+import PatientInfo, {giveStartingWeight} from './components/PatientInfo/PatientInfo';
 import MommyFacts from './components/MommyFacts/MommyFacts';
+
 class weekObjectMaker{
   constructor(goalWeight, actualWeight, doctorsNote, patientsNote){
     this.goalWeight = goalWeight;
@@ -15,7 +16,7 @@ class weekObjectMaker{
 function makeNumberWeeks(weeks){
   var array=[];
 for (var i = 0; i < weeks; i++){
-   array.push( new weekObjectMaker('____','____','none','none'));
+   array.push( new weekObjectMaker('____','____',' none',' none'));
 }
 return array;
 }
@@ -28,14 +29,16 @@ export default class App extends Component {
     super();
     this.state={
       goalWeight: 0,
-      startingWeight: 0,
+        startingWeight: 40,
+        bmiRange: 'HEALTHY',
       Trimester1Weeks: makeWeeks1,
       Trimester23Weeks: makeWeeks2,
+
       
     }
     this.makeTrimester1=this.makeTrimester1.bind(this);
      this.makeTrimester23=this.makeTrimester23.bind(this);
- 
+ this.getStartingWeight=this.getStartingWeight.bind(this);
   }
 
 
@@ -69,7 +72,12 @@ makeTrimester23(){
 return array;
 }
 
-
+getStartingWeight(bmiRange,startingWeight){
+this.setState({
+bmiRange: bmiRange,
+startingWeight : startingWeight
+})
+}
 
 
 
@@ -85,7 +93,7 @@ return array;
           <h2>Pregnancy Fitness Tracker</h2>
         </div>
         <div className="PatientInfo">
-          <PatientInfo goalWeight={this.state.goalWeight}/>
+          <PatientInfo getStartingWeight={this.getStartingWeight}/>
         </div>
         <div className="calendarClass">
           <Calendar Trimester1Weeks={this.state.Trimester1Weeks} Trimester23Weeks={this.state.Trimester23Weeks}/>
