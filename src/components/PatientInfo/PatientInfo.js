@@ -9,36 +9,41 @@ export default class PatientInfo extends Component{
          
             startingWeight2: 0,
             height: 20,
-            calculatedBMI: 0,
+            calculatedBMI: 24,
             bmiRange2: "_______"
            
             
         }
         this.handleWeightChange=this.handleWeightChange.bind(this);
         this.handleHeightChange=this.handleHeightChange.bind(this);
-        this.calculatBMI=this.calculatBMI.bind(this);
+        this.calculateBMI=this.calculateBMI.bind(this);
 
-       
+      
     }
 
 
 
 handleWeightChange(e){
-    this.setState({
-        startingWeight2: e.target.value
-    })
+    this.setState(
+        
+        Object.assign({}, this.state,{startingWeight2: e.target.value} )
+       
+    )
 }
 handleHeightChange(e){
-    this.setState({
-       height: e.target.value
-    })
+    this.setState(
+        Object.assign({}, this.state,{height: e.target.value} )
+    )
 }
 
- calculatBMI(state){
+ calculateBMI(state){
+
+
       var convertedWeight= (this.state.startingWeight2*0.45);
       var convertedHeight= (this.state.height*0.025);
       var heightSquared=Math.pow(convertedHeight,2);
       var myCalculatedBMI= (convertedWeight/heightSquared);
+    
       this.setState({
           calculatedBMI: myCalculatedBMI
       })
@@ -58,9 +63,13 @@ handleHeightChange(e){
       this.setState({
         bmiRange2: range
       })
-   return this.props.getStartingWeightAndBMI(range,this.state.startingWeight2);
+     
+   this.props.getStartingWeightAndBMI(range,this.state.startingWeight2);
     }
    
+/*componentDidMount(){
+    this.calculateBMI();
+}*/
 
 
 
@@ -83,7 +92,7 @@ handleHeightChange(e){
                Height in inches <input onChange={this.handleHeightChange}/>
                <br/>
                <br/>
-               <button id="addHeight" onClick={()=>this.calculatBMI()}>CalculateBMI</button>
+               <button id="addHeight" onClick={()=>this.calculateBMI(this.state)}>CalculateBMI</button>
              <br/>
 
              <h4>Your BMI is : {this.state.calculatedBMI}</h4>

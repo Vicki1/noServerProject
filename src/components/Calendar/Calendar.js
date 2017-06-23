@@ -41,9 +41,9 @@ makeTrimester1(){
   var startingWeight=this.props.startingWeight;
    var trimester1Length=12;
 
-   console.log(array[1].goalWeight)
+ 
    for (var i = 0; i < trimester1Length ; i++){
-     console.log(array[i])
+     
     array[i].goalWeight = (startingWeight+4); 
 } 
 this.setState({
@@ -61,7 +61,7 @@ makeTrimester23(){
    for (var i = 0; i < trimester1Length ; i++){
       array[i].goalWeight=(startingWeight+5+(1.3*(i))); 
  } 
-console.log(array);
+
 this.setState({
    Trimester23Weeks: array
 })
@@ -75,13 +75,13 @@ componentDidMount(){
 }
 
     render(){
-        console.log(this.state.Trimester1Weeks);
+       console.log(this.props)
         return(
             <div>
                 <ul>
               {
                         this.state.Trimester1Weeks.map( (object, i) => {
-                            console.log(object)
+                            
                             return <li key={i}>
                                 <br/>
                                 <br/>

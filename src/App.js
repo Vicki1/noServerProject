@@ -11,7 +11,7 @@ export default class App extends Component {
   constructor(){
     super();
     this.state={
-        startingWeight: 40,
+        startingWeight: 0,
         goalWeight: 0,
         bmiRange: '______',
    
@@ -24,11 +24,13 @@ export default class App extends Component {
 
 // get bmiRange and startingWeight input from PatentInfo.js
 getStartingWeightAndBMI(bmiRange,startingWeight){
-this.setState({
-bmiRange: bmiRange,
-startingWeight : startingWeight
-})
+  
+this.setState(
+ Object.assign({}, this.state, {bmiRange: bmiRange,startingWeight : startingWeight})
+)
+
 }
+
 
 render() {
  return (
@@ -41,7 +43,7 @@ render() {
           <PatientInfo getStartingWeightAndBMI={this.getStartingWeightAndBMI}/>
         </div>
         <div className="calendarClass">
-          <Calendar  bmiRange={this.state.bmiRange} startingWeight={this.state.startingWeight} Trimester1WeeksGainPlan={this.state.Trimester1WeeksGainPlan} Trimester1Weeks={this.state.Trimester1Weeks} Trimester23WeeksGainPlan={this.state.Trimester23WeeksGainPlan} Trimester23Weeks={this.state.Trimester23Weeks}/>
+          <Calendar  bmiRange={this.state.bmiRange} startingWeight={this.state.startingWeight}/>
         </div>
         <div className="mommyFactsclass">
           <MommyFacts />
