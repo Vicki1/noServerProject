@@ -12,7 +12,6 @@ export default class App extends Component {
     super();
     this.state={
         startingWeight: 0,
-        goalWeight: 0,
         bmiRange: '______',
    
        }
