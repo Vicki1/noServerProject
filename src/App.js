@@ -15,7 +15,7 @@ class weekObjectMaker{
 function makeNumberWeeks(weeks){
   var array=[];
 for (var i = 0; i < weeks; i++){
-   array.push( new weekObjectMaker(150,77,'none','none'));
+   array.push( new weekObjectMaker('____','____','none','none'));
 }
 return array;
 }
@@ -27,7 +27,7 @@ export default class App extends Component {
   constructor(){
     super();
     this.state={
-      goalWeight: 150,
+      goalWeight: 0,
       startingWeight: 0,
       Trimester1Weeks: makeWeeks1,
       Trimester23Weeks: makeWeeks2,

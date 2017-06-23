@@ -6,15 +6,19 @@ export default class PatientInfo extends Component{
     constructor(){
         super();
         this.state={
+         
             startingWeight: 40,
             height: 20,
             calculatedBMI: 0,
-            bmiRange: '_________'
+            bmiRange: "HEALTHY"
+            
         }
         this.handleWeightChange=this.handleWeightChange.bind(this);
         this.handleHeightChange=this.handleHeightChange.bind(this);
         this.calculatBMI=this.calculatBMI.bind(this);
+       
     }
+
 
 
 handleWeightChange(e){
@@ -63,11 +67,14 @@ combineClearWeight(state){
     })
    }
 
+
+
     render(){
        console.log(this.state)
       
         return(
             <div>
+                <h3>{this.state.openingMessage}</h3>
                 <h3>What is your BMI?</h3>
                  I am female (or a pregnant seahorse)
                  <br/>

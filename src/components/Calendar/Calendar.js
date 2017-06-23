@@ -6,11 +6,13 @@ export default class Calendar extends Component{
     render(){
         return(
             <div>
-              <ol>  {
+                <ul>
+              {
                         this.props.Trimester1Weeks.map( (object, i) => {
                             return <li key={i}>
                                 <br/>
                                 <br/>
+                                Week {i+1}<br/><br/>
                                 Goal Weight:{object.goalWeight}<br/><br/>
                                 Actual Weight:{object.actualWeight}<br/><br/>
                                 Doctors Note:{object.doctorsNote}<br/><br/>
@@ -25,6 +27,7 @@ export default class Calendar extends Component{
                             return <li key={i}>
                                 <br/>
                                 <br/>
+                                 Week {i+13}<br/><br/>
                                 Goal Weight:{object.goalWeight}<br/><br/>
                                 Actual Weight:{object.actualWeight}<br/><br/>
                                 Doctors Note:{object.doctorsNote}<br/><br/>
@@ -33,7 +36,7 @@ export default class Calendar extends Component{
                             
                         })
                     }
-                    </ol>
+                    </ul>
             </div>
         )
     }
