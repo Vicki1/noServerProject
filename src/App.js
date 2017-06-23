@@ -85,7 +85,7 @@ return array;
           <h2>Pregnancy Fitness Tracker</h2>
         </div>
         <div className="PatientInfo">
-          <PatientInfo/>
+          <PatientInfo goalWeight={this.state.goalWeight}/>
         </div>
         <div className="calendarClass">
           <Calendar Trimester1Weeks={this.state.Trimester1Weeks} Trimester23Weeks={this.state.Trimester23Weeks}/>
