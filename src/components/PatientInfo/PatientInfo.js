@@ -58,7 +58,7 @@ handleHeightChange(e){
       this.setState({
         bmiRange2: range
       })
-   return this.props.getStartingWeight(range,this.state.startingWeight2);
+   return this.props.getStartingWeightAndBMI(range,this.state.startingWeight2);
     }
    
 
