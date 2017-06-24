@@ -24,7 +24,8 @@ export default class Calendar extends Component{
                                 <br/>
                                 <br/>
                                 Week {i+1}<br/><br/>
-                                Goal Weight:  {object.goalWeight}<br/><br/>
+                                Maximum Goal Weight: {object.maxGoalWeight}<br/><br/>
+                                Minimum Goal Weight: {object.minGoalWeight}<br/><br/>
                                 Actual Weight: {object.actualWeight}<br/><br/>
                                 Doctor's Note: {object.doctorsNote}<br/><br/>
                                 Personal Note: {object.patientsNote}</li>
@@ -39,7 +40,8 @@ export default class Calendar extends Component{
                                 <br/>
                                 <br/>
                                  Week {i+13}<br/><br/>
-                                Goal Weight:{object.goalWeight}<br/><br/>
+                                Maximum Goal Weight:{object.maxGoalWeight}<br/><br/>
+                               Minimum Goal Weight: {object.minGoalWeight}<br/><br/>
                                 Actual Weight:{object.actualWeight}<br/><br/>
                                 Doctor's Note:{object.doctorsNote}<br/><br/>
                                 Personal Note:{object.patientsNote}</li>

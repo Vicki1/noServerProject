@@ -7,8 +7,9 @@ import PatientInfo from './components/PatientInfo/PatientInfo';
 
 //THIS IS THE FIRST PROJECT!!
 class weekObjectMaker{
-  constructor(goalWeight, actualWeight, doctorsNote, patientsNote){
-    this.goalWeight = goalWeight;
+  constructor(maxGoalWeight, minGoalWeight,actualWeight, doctorsNote, patientsNote){
+    this.maxGoalWeight = maxGoalWeight;
+    this.minGoalWeight = minGoalWeight;
     this.actualWeight = actualWeight;
     this.doctorsNote=doctorsNote;
     this.patientsNote=patientsNote;
@@ -17,14 +18,14 @@ class weekObjectMaker{
 function makeNumberWeeks(weeks){
   var array=[];
 for (var i = 0; i < weeks; i++){
-   array.push( new weekObjectMaker('____',<input className="actualWeightInput"/>,<input className="doctorsNoteInput"/>,<input className="patientsNoteInput"/>));
+   array.push( new weekObjectMaker('____','____',<input className="actualWeightInput"/>,<input className="doctorsNoteInput"/>,<input className="patientsNoteInput"/>));
 }
 return array;
 }
 
 var makeWeeks1 = makeNumberWeeks(12);
 
-var makeWeeks2 = makeNumberWeeks(24);
+var makeWeeks2 = makeNumberWeeks(28);
 
 export default class App extends Component {
   constructor(){
@@ -71,16 +72,16 @@ this.calculateBMI=this.calculateBMI.bind(this);
   var array1=this.state.Trimester1Weeks.slice(0);
   var trimesterLength1=12;
   for (var i = 0; i < trimesterLength1 ; i++){
-     array1[i].goalWeight = (Number(weight)+4); 
+     array1[i].maxGoalWeight = (Number(weight)+4); 
+     array1[i].minGoalWeight = (Number(weight))
    
 } 
   var array23=this.state.Trimester23Weeks.slice(0);
-  var trimesterLength23=24;
+  var trimesterLength23=28;
   for (var j = 0; j < trimesterLength23 ; j++){
-     array23[j].goalWeight = (Number(weight)+5+(1.3*(j)));
-     this.setState({
-       
-     })
+     array23[j].maxGoalWeight = (Number(weight)+5+(1.107*(j)));
+      array23[j].minGoalWeight = (Number(weight)+5+(0.7449*(j)))
+     
  } 
  
  
