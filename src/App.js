@@ -3,35 +3,112 @@ import logo from './logo.svg';
 import './App.css';
 import Calendar from './components/Calendar/Calendar';
 import PatientInfo from './components/PatientInfo/PatientInfo';
-import MommyFacts from './components/MommyFacts/MommyFacts';
 
 
+//THIS IS THE FIRST PROJECT!!
+class weekObjectMaker{
+  constructor(goalWeight, actualWeight, doctorsNote, patientsNote){
+    this.goalWeight = goalWeight;
+    this.actualWeight = actualWeight;
+    this.doctorsNote=doctorsNote;
+    this.patientsNote=patientsNote;
+  }
+}
+function makeNumberWeeks(weeks){
+  var array=[];
+for (var i = 0; i < weeks; i++){
+   array.push( new weekObjectMaker('____',<input className="actualWeightInput"/>,<input className="doctorsNoteInput"/>,<input className="patientsNoteInput"/>));
+}
+return array;
+}
+
+var makeWeeks1 = makeNumberWeeks(12);
+
+var makeWeeks2 = makeNumberWeeks(24);
 
 export default class App extends Component {
   constructor(){
     super();
     this.state={
-        startingWeight: 0,
+        startingWeight: 170,
+        theirHeight: 67,
+        calculatedBMI: 24,
         bmiRange: '______',
-   
+        Trimester1Weeks: makeWeeks1,//should be good
+        Trimester23Weeks: makeWeeks2,//should be good
        }
    
- this.getStartingWeightAndBMI=this.getStartingWeightAndBMI.bind(this);
+
+this.calculateBMI=this.calculateBMI.bind(this);
  
   }
 
 
 // get bmiRange and startingWeight input from PatentInfo.js
-getStartingWeightAndBMI(bmiRange,startingWeight){
-  
-this.setState(
- Object.assign({}, this.state, {bmiRange: bmiRange,startingWeight : startingWeight})
-)
 
-}
+ calculateBMI(weight,height){
+
+
+      var convertedWeight= (weight*0.45);
+      var convertedHeight= (height*0.025);
+      var heightSquared=Math.pow(convertedHeight,2);
+      var myCalculatedBMI= (convertedWeight/heightSquared);
+    
+      var range= "HEALTHY";
+      if (18.5 <= myCalculatedBMI && myCalculatedBMI<= 24.9){
+       range = "HEALTHY";
+      }
+      else if (myCalculatedBMI < 18.5){
+         range = "TOO LOW, Please consult a doctor for special suggestions concerning your weight gain during pregnancy." ;
+      }
+      else if (myCalculatedBMI > 24.9){
+          range= "TOO HIGH, Please consult a doctor for special suggestions concerning your weight gain during pregnancy.";
+      }
+      else {
+          range="INVALID INPUT, Please input numeric values for height and weight"
+      }
+     
+     
+  var array1=this.state.Trimester1Weeks.slice(0);
+  var trimesterLength1=12;
+  for (var i = 0; i < trimesterLength1 ; i++){
+     array1[i].goalWeight = (weight+4); 
+    console.log(array1)
+} 
+ var array23=this.state.Trimester23Weeks.slice(0);
+   var trimester1Length=24;
+   for (var j = 0; j < trimester1Length ; j++){
+      array23[i].goalWeight=(weight+5+(1.3*(i))); 
+ } 
+console.log(array23)
+       
+       this.setState({
+        bmiRange: range,
+        startingWeight: weight,
+        theirHeight: height,
+        calculatedBMI: myCalculatedBMI,
+        Trimester1Weeks: array1,//should be good
+        Trimester23Weeks: array23,
+      })
+ }
+ 
+
+   
+
+//create goals for trimester 2-3
+
+ 
+
+
 
 
 render() {
+  console.log(this.state.calculatedBMI)
+  console.log(this.state.bmiRange)
+console.log(this.state.startingWeight)
+console.log(this.state.theirHeight)
+
+
  return (
       <div className="App">
         <div className="App-header">
@@ -39,14 +116,12 @@ render() {
           <h2>Pregnancy Fitness Tracker</h2>
         </div>
         <div className="PatientInfo">
-          <PatientInfo getStartingWeightAndBMI={this.getStartingWeightAndBMI}/>
+          <PatientInfo calculateBMI={this.calculateBMI}/>
         </div>
         <div className="calendarClass">
-          <Calendar  bmiRange={this.state.bmiRange} startingWeight={this.state.startingWeight}/>
+          <Calendar  Trimester1Weeks={this.state.Trimester1Weeks}  Trimester23Weeks={this.state.Trimester23Weeks}/>
         </div>
-        <div className="mommyFactsclass">
-          <MommyFacts />
-        </div>
+       
       </div>
     );
   }
