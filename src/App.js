@@ -68,19 +68,23 @@ this.calculateBMI=this.calculateBMI.bind(this);
           range="INVALID INPUT, Please input numeric values for height and weight"
       }
      
-     
   var array1=this.state.Trimester1Weeks.slice(0);
   var trimesterLength1=12;
   for (var i = 0; i < trimesterLength1 ; i++){
-     array1[i].goalWeight = (weight+4); 
-    console.log(array1)
+     array1[i].goalWeight = (Number(weight)+4); 
+   
 } 
- var array23=this.state.Trimester23Weeks.slice(0);
-   var trimester1Length=24;
-   for (var j = 0; j < trimester1Length ; j++){
-      array23[i].goalWeight=(weight+5+(1.3*(i))); 
+  var array23=this.state.Trimester23Weeks.slice(0);
+  var trimesterLength23=24;
+  for (var j = 0; j < trimesterLength23 ; j++){
+     array23[j].goalWeight = (Number(weight)+5+(1.3*(j)));
+     this.setState({
+       
+     })
  } 
-console.log(array23)
+ 
+ 
+//(Number(weight)+5+(1.3*(j)))
        
        this.setState({
         bmiRange: range,
@@ -88,7 +92,7 @@ console.log(array23)
         theirHeight: height,
         calculatedBMI: myCalculatedBMI,
         Trimester1Weeks: array1,//should be good
-        Trimester23Weeks: array23,
+        Trimester23Weeks: array23
       })
  }
  
@@ -107,7 +111,7 @@ render() {
   console.log(this.state.bmiRange)
 console.log(this.state.startingWeight)
 console.log(this.state.theirHeight)
-
+console.log(this.state.Trimester23Weeks);
 
  return (
       <div className="App">

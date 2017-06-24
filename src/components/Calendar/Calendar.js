@@ -24,7 +24,7 @@ export default class Calendar extends Component{
                                 <br/>
                                 <br/>
                                 Week {i+1}<br/><br/>
-                                Goal Weight: {object.goalWeight}<br/><br/>
+                                Goal Weight:  {object.goalWeight}<br/><br/>
                                 Actual Weight: {object.actualWeight}<br/><br/>
                                 Doctor's Note: {object.doctorsNote}<br/><br/>
                                 Personal Note: {object.patientsNote}</li>
