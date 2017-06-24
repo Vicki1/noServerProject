@@ -31,9 +31,9 @@ export default class App extends Component {
   constructor(){
     super();
     this.state={
-        startingWeight: 170,
-        theirHeight: 67,
-        calculatedBMI: 24,
+        startingWeight: "",
+        theirHeight: "",
+        calculatedBMI:'______' ,
         bmiRange: '______',
         Trimester1Weeks: makeWeeks1,//should be good
         Trimester23Weeks: makeWeeks2,//should be good
@@ -55,7 +55,7 @@ this.calculateBMI=this.calculateBMI.bind(this);
       var heightSquared=Math.pow(convertedHeight,2);
       var myCalculatedBMI= (convertedWeight/heightSquared);
     
-      var range= "HEALTHY";
+      var range= "";
       if (18.5 <= myCalculatedBMI && myCalculatedBMI<= 24.9){
        range = "HEALTHY";
       }
@@ -68,34 +68,45 @@ this.calculateBMI=this.calculateBMI.bind(this);
       else {
           range="INVALID INPUT, Please input numeric values for height and weight"
       }
-     
+
   var array1=this.state.Trimester1Weeks.slice(0);
   var trimesterLength1=12;
   for (var i = 0; i < trimesterLength1 ; i++){
-     array1[i].maxGoalWeight = (Number(weight)+4); 
+     if(range==="HEALTHY"){array1[i].maxGoalWeight = (Number(weight)+4); 
      array1[i].minGoalWeight = (Number(weight))
-   
+    }
+    else{ 
+  array1[i].maxGoalWeight = <input className="doctorMaxGoalInput"/>;
+  array1[i].minGoalWeight = <input className="doctorMinGoalInput"/>;
+    }
 } 
   var array23=this.state.Trimester23Weeks.slice(0);
   var trimesterLength23=28;
   for (var j = 0; j < trimesterLength23 ; j++){
+    if (range==="HEALTHY"){
      array23[j].maxGoalWeight = (Number(weight)+5+(1.107*(j)));
       array23[j].minGoalWeight = (Number(weight)+5+(0.7449*(j)))
-     
+    }
+    else{
+    array23[j].maxGoalWeight = <input className="doctorMaxGoalInput"/>;
+    array23[j].minGoalWeight = <input className="doctorMinGoalInput" />
+    }
  } 
- 
- 
-//(Number(weight)+5+(1.3*(j)))
-       
-       this.setState({
+ this.setState({
+ Trimester1Weeks: array1,//should be good
+        Trimester23Weeks: array23,
         bmiRange: range,
         startingWeight: weight,
         theirHeight: height,
         calculatedBMI: myCalculatedBMI,
-        Trimester1Weeks: array1,//should be good
-        Trimester23Weeks: array23
-      })
- }
+ })
+  
+ 
+//(Number(weight)+5+(1.3*(j)))
+  
+  
+ } 
+ 
  
 
    
@@ -115,6 +126,7 @@ console.log(this.state.theirHeight)
 console.log(this.state.Trimester23Weeks);
 
  return (
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"></link>
       <div className="App">
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -124,7 +136,7 @@ console.log(this.state.Trimester23Weeks);
           <PatientInfo calculateBMI={this.calculateBMI}/>
         </div>
         <div className="calendarClass">
-          <Calendar  Trimester1Weeks={this.state.Trimester1Weeks}  Trimester23Weeks={this.state.Trimester23Weeks}/>
+          <Calendar bmiRange={this.state.bmiRange} calculatedBMI={this.state.calculatedBMI}Trimester1Weeks={this.state.Trimester1Weeks}  Trimester23Weeks={this.state.Trimester23Weeks}/>
         </div>
        
       </div>
