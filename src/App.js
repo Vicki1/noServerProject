@@ -126,13 +126,15 @@ console.log(this.state.theirHeight)
 console.log(this.state.Trimester23Weeks);
 
  return (
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"></link>
-      <div className="App">
+
+      <div className="App bg-danger">
+          
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Pregnancy Fitness Tracker</h2>
         </div>
         <div className="PatientInfo">
+          <div className="spacer"></div>
           <PatientInfo calculateBMI={this.calculateBMI}/>
         </div>
         <div className="calendarClass">

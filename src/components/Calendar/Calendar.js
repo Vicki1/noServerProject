@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-
+import $ from "jquery";
 
 
 export default class Calendar extends Component{
@@ -13,16 +13,21 @@ export default class Calendar extends Component{
 
 
 
+/*componentDidMount() {
+jQuery(React.findDOMNode(this.refs.tooltip)).tooltip();
+}*/
+
 
 
     render(){
     
         return(
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css"></link>
+      
             <div>
-                   <h4>Your BMI is : {this.props.calculatedBMI}</h4>
-             <h4>Your BMI is generally considered: {this.props.bmiRange}</h4>
-                <ul>
+                      
+                   <h4><span className="bmiInfo">Your BMI is :</span> {this.props.calculatedBMI}</h4>
+             <h4 className="bmiMessage"><span className="bmiInfo">Your BMI is generally considered:</span> {this.props.bmiRange}</h4>
+                <ul className="plan">
               {
                         this.props.Trimester1Weeks.map( (object, i) => {
                             

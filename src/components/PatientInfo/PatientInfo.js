@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import { Button } from 'react-bootstrap';
+
 //file should be good
 
 
@@ -36,15 +38,18 @@ this.props.calculateBMI(this.state.startingWeight2,this.state.height)
     
         return(
             <div>
-                
-                <h3>Calculate your BMI</h3>
-                Pre-pregnancy weight in lbs. <input onChange={this.handleWeightChange}/>
+                     
+                <h4 className="calculationHeader">Calculate your BMI</h4>
+                <br/>
+                Pre-pregnancy weight in lbs.<br/> 
+                <input onChange={this.handleWeightChange}/>
                <br/>
                <br/>
-               Height in inches <input onChange={this.handleHeightChange}/>
+               Height in inches<br/>
+                <input onChange={this.handleHeightChange}/> 
                <br/>
                <br/>
-               <button id="addHeight" onClick={()=>this.recordInput(this.state)}>CalculateBMI</button>
+               <button id="addHeight" className="btn btn-info" onClick={()=>this.recordInput(this.state)}>CalculateBMI</button>
              <br/>
 
           
