@@ -33,12 +33,13 @@ this.props.calculateBMI(this.state.startingWeight2,this.state.height)
 }
 
 
+
     render(){
     
     
         return(
             <div>
-                     
+                    
                 <h4 className="calculationHeader">Calculate your BMI</h4>
                 <br/>
                 Pre-pregnancy weight in lbs.<br/> 

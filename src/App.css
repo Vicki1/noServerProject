@@ -6,8 +6,22 @@
   text-align: center; }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  animation: heartbeat 5s infinite;
   height: 80px; }
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(0.75); }
+  20% {
+    transform: scale(1); }
+  40% {
+    transform: scale(0.75); }
+  60% {
+    transform: scale(1); }
+  80% {
+    transform: scale(0.75); }
+  100% {
+    transform: scale(0.75); } }
 
 .App-header {
   height: 150px;
@@ -24,8 +38,22 @@
   to {
     transform: rotate(360deg); } }
 
+@keyframes backAndForth {
+  from {
+    left: 0px; }
+  to {
+    left: 300px; } }
+
+@-webkit-keyframes backAndForth {
+  from {
+    left: 0px; }
+  to {
+    left: 300px; } }
+
 .bmiInfo {
-  font-family: "Bungee Inline", cursive; }
+  font-family: "Bungee Inline", cursive;
+  animation: backAndForth 3s infinite;
+  -webkit-animation: backAndForth 3s infinite; }
 
 .spacer {
   height: 40px; }

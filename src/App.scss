@@ -11,8 +11,30 @@ $font-stack:   'Bungee Inline', cursive;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  animation: heartbeat 5s infinite;
   height: 80px;
+  
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale( .75);
+  }
+  20% {
+    transform: scale( 1);
+  }
+  40% {
+    transform: scale( .75);
+  }
+  60% {
+    transform: scale( 1);
+  }
+  80% {
+    transform: scale( .75);
+  }
+  100% {
+    transform: scale( .75);
+  }
 }
 
 .App-header {
@@ -31,10 +53,19 @@ $font-stack:   'Bungee Inline', cursive;
   to { transform: rotate(360deg); }
 }
 
-
+@keyframes backAndForth{
+  from {left:0px;}
+  to {left: 300px;}
+};
+@-webkit-keyframes backAndForth{
+  from {left:0px;}
+  to {left: 300px;}
+}
 
 .bmiInfo{
-  font-family: $font-stack
+  font-family: $font-stack;
+ animation: backAndForth 3s infinite;
+ -webkit-animation: backAndForth 3s infinite;
 }
 
 .spacer{
@@ -54,3 +85,6 @@ font-family: $font-stack
   list-style-type: none;
 
 }
+
+
+

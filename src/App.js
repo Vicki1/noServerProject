@@ -130,7 +130,7 @@ console.log(this.state.Trimester23Weeks);
       <div className="App bg-danger">
           
         <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src='https://www.clker.com/cliparts/0/9/n/r/k/e/baby-heart.svg' className="App-logo" alt="logo" />
           <h2>Pregnancy Fitness Tracker</h2>
         </div>
         <div className="PatientInfo">
